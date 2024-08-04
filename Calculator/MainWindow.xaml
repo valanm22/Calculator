@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="663" Width="476">
     <Grid>
+        <Button Content="0" HorizontalAlignment="Left" Margin="0,529,0,0" VerticalAlignment="Top" Height="95" Width="230" FontSize="20" FontFamily="Arial"/>
+        <Button Content="." HorizontalAlignment="Left" Margin="230,529,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="=" HorizontalAlignment="Left" Margin="345,529,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="1" HorizontalAlignment="Left" Margin="0,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="2" HorizontalAlignment="Left" Margin="115,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="3" HorizontalAlignment="Left" Margin="230,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="345,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="Calculator&#xD;&#xA;" VerticalAlignment="Top" Width="460" Height="149" FontSize="20" FontFamily="Arial"/>
+        <Button Content="4" HorizontalAlignment="Left" Margin="0,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="5" HorizontalAlignment="Left" Margin="115,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="6" HorizontalAlignment="Left" Margin="230,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="-" HorizontalAlignment="Left" Margin="345,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="7" HorizontalAlignment="Left" Margin="0,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="8" HorizontalAlignment="Left" Margin="115,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="9" HorizontalAlignment="Left" Margin="230,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="×" HorizontalAlignment="Left" Margin="345,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="AC" HorizontalAlignment="Left" Margin="0,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="+/-" HorizontalAlignment="Left" Margin="115,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="%" HorizontalAlignment="Left" Margin="230,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
+        <Button Content="÷" HorizontalAlignment="Left" Margin="345,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="20" FontFamily="Arial"/>
 
     </Grid>
 </Window>

@@ -16,9 +16,16 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private double _currentValue = 0;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Display.Text = Display.Text + button.Content.ToString();
         }
     }
 }

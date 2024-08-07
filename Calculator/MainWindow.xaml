@@ -6,27 +6,47 @@
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
         Title="Calculator" Height="663" Width="476" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="NoHoverButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Button Content="0" HorizontalAlignment="Left" Margin="0,529,0,0" VerticalAlignment="Top" Height="95" Width="230" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="." HorizontalAlignment="Left" Margin="230,529,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="=" HorizontalAlignment="Left" Margin="345,529,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="1" HorizontalAlignment="Left" Margin="0,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="2" HorizontalAlignment="Left" Margin="115,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="3" HorizontalAlignment="Left" Margin="230,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="+" HorizontalAlignment="Left" Margin="345,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="0" HorizontalAlignment="Left" Margin="0,529,0,0" VerticalAlignment="Top" Height="95" Width="230" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="." HorizontalAlignment="Left" Margin="230,529,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="=" HorizontalAlignment="Left" Margin="345,529,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#ff9f0a" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="1" HorizontalAlignment="Left" Margin="0,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="2" HorizontalAlignment="Left" Margin="115,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="3" HorizontalAlignment="Left" Margin="230,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="+" HorizontalAlignment="Left" Margin="345,434,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#ff9f0a" FontFamily="Arial" Click="Button_Click"/>
         <TextBox Name="Display" HorizontalAlignment="Center" TextWrapping="NoWrap" AcceptsReturn="False" VerticalAlignment="Top" VerticalContentAlignment="Bottom"
-                 Text="0" MaxLength="10" HorizontalContentAlignment="Right" Width="460" Height="149" FontSize="48" FontFamily="Arial"/>
-        <Button Content="4" HorizontalAlignment="Left" Margin="0,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="5" HorizontalAlignment="Left" Margin="115,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="6" HorizontalAlignment="Left" Margin="230,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="345,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="7" HorizontalAlignment="Left" Margin="0,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="8" HorizontalAlignment="Left" Margin="115,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="9" HorizontalAlignment="Left" Margin="230,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="×" HorizontalAlignment="Left" Margin="345,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="AC" HorizontalAlignment="Left" Margin="0,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="+/-" HorizontalAlignment="Left" Margin="115,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="%" HorizontalAlignment="Left" Margin="230,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
-        <Button Content="÷" HorizontalAlignment="Left" Margin="345,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" FontFamily="Arial" Click="Button_Click"/>
+                 Text="0" MaxLength="10" HorizontalContentAlignment="Right" Width="460" Height="149" FontSize="48" FontFamily="Arial" Foreground="#e6e6e6" Background="#222222"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="4" HorizontalAlignment="Left" Margin="0,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="5" HorizontalAlignment="Left" Margin="115,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="6" HorizontalAlignment="Left" Margin="230,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="-" HorizontalAlignment="Left" Margin="345,339,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#ff9f0a" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="7" HorizontalAlignment="Left" Margin="0,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="8" HorizontalAlignment="Left" Margin="115,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="9" HorizontalAlignment="Left" Margin="230,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#595959" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="×" HorizontalAlignment="Left" Margin="345,244,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#ff9f0a" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="AC" HorizontalAlignment="Left" Margin="0,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#383838" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="+/-" HorizontalAlignment="Left" Margin="115,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#383838" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="%" HorizontalAlignment="Left" Margin="230,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#383838" FontFamily="Arial" Click="Button_Click"/>
+        <Button Style="{StaticResource NoHoverButtonStyle}" Content="÷" HorizontalAlignment="Left" Margin="345,149,0,0" VerticalAlignment="Top" Height="95" Width="115" FontSize="36" Foreground="#e6e6e6" Background="#ff9f0a" FontFamily="Arial" Click="Button_Click"/>
     </Grid>
 </Window>

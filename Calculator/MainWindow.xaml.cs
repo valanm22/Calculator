@@ -21,6 +21,7 @@ namespace Calculator
         private decimal _previousValue = 0;
         private string _operation = "";
         private bool _isNew = true;
+        private const int DisplayLength = 16;
 
         public MainWindow()
         {
@@ -30,7 +31,7 @@ namespace Calculator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            String content = button.Content.ToString();
+            string content = button.Content.ToString();
 
             if (char.IsDigit(content, 0) || content == ".")
             {
@@ -41,7 +42,10 @@ namespace Calculator
                 }
                 else
                 {
-                    Display.Text += content;
+                    if (Display.Text.Length < DisplayLength)
+                    {
+                        Display.Text += content;
+                    }
                 }
                 _currentValue = decimal.Parse(Display.Text);
             }
@@ -68,48 +72,125 @@ namespace Calculator
                         break;
 
                     case "=":
-                        Calculate();
-                        _operation = "";
+                        if (!string.IsNullOrEmpty(_operation))
+                        {
+                            Calculate();
+                            _operation = "";
+                            _previousValue = _currentValue;  // update previous value to the current result
+                        }
+                        _isNew = true;
                         break;
 
                     default:
                         if (!string.IsNullOrEmpty(_operation))
                         {
-                            Calculate();
+                            CalculateIntermediate();
                         }
-                        _previousValue = _currentValue;
+                        else
+                        {
+                            _previousValue = _currentValue;
+                        }
                         _operation = content;
                         _isNew = true;
                         break;
                 }
             }
         }
+
         private void Calculate()
         {
-            switch (_operation)
+            try
             {
-                case "+":
-                    _currentValue = _previousValue + _currentValue;
-                    break;
-                case "-":
-                    _currentValue = _previousValue - _currentValue;
-                    break;
-                case "×":
-                    _currentValue = _previousValue * _currentValue;
-                    break;
-                case "÷":
-                    if (_currentValue != 0)
-                    {
-                        _currentValue = _previousValue / _currentValue;
-                    }
-                    else
-                    {
-                        Display.Text = "undefined";
-                    }
-                    break;
-            }
+                switch (_operation)
+                {
+                    case "+":
+                        _currentValue = _previousValue + _currentValue;
+                        break;
+                    case "-":
+                        _currentValue = _previousValue - _currentValue;
+                        break;
+                    case "×":
+                        _currentValue = _previousValue * _currentValue;
+                        break;
+                    case "÷":
+                        if (_currentValue != 0)
+                        {
+                            _currentValue = _previousValue / _currentValue;
+                        }
+                        else
+                        {
+                            Display.Text = "Undefined";
+                            return;
+                        }
+                        break;
+                }
 
-            Display.Text = _currentValue.ToString();
+                if (_currentValue.ToString().Length > DisplayLength)
+                {
+                    Display.Text = "Limit Exceeded";
+                    ResetCalculator();
+                }
+                else
+                {
+                    Display.Text = _currentValue.ToString();
+                }
+            }
+            catch (OverflowException)
+            {
+                Display.Text = "Limit Exceeded";
+                ResetCalculator();
+            }
+        }
+
+        private void CalculateIntermediate()
+        {
+            try
+            {
+                switch (_operation)
+                {
+                    case "+":
+                        _previousValue += _currentValue;
+                        break;
+                    case "-":
+                        _previousValue -= _currentValue;
+                        break;
+                    case "×":
+                        _previousValue *= _currentValue;
+                        break;
+                    case "÷":
+                        if (_currentValue != 0)
+                        {
+                            _previousValue /= _currentValue;
+                        }
+                        else
+                        {
+                            Display.Text = "Undefined";
+                            return;
+                        }
+                        break;
+                }
+
+                if (_previousValue.ToString().Length > DisplayLength)
+                {
+                    Display.Text = "Limit Exceeded";
+                    ResetCalculator();
+                }
+
+                _currentValue = 0;
+            }
+            catch (OverflowException)
+            {
+                Display.Text = "Limit Exceeded";
+                ResetCalculator();
+            }
+        }
+
+        private void ResetCalculator()
+        {
+            _currentValue = 0;
+            _previousValue = 0;
+            _operation = "";
+            _isNew = true;
         }
     }
 }

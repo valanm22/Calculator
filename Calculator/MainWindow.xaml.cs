@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -76,7 +75,7 @@ namespace Calculator
                         {
                             Calculate();
                             _operation = "";
-                            _previousValue = _currentValue;  // update previous value to the current result
+                            _previousValue = _currentValue;
                         }
                         _isNew = true;
                         break;
@@ -116,6 +115,7 @@ namespace Calculator
                         if (_currentValue != 0)
                         {
                             _currentValue = _previousValue / _currentValue;
+                            _currentValue = Math.Round(_currentValue, 5);
                         }
                         else
                         {
@@ -160,7 +160,8 @@ namespace Calculator
                     case "÷":
                         if (_currentValue != 0)
                         {
-                            _previousValue /= _currentValue;
+                            _previousValue = _previousValue / _currentValue;
+                            _previousValue = Math.Round(_previousValue, 5);
                         }
                         else
                         {
